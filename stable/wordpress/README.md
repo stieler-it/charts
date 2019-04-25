@@ -31,6 +31,8 @@ $ helm install --name my-release stable/wordpress
 
 The command deploys WordPress on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
 
+Please note that you probably want to specify a value for `mariadb.rootUser.password` and `mariadb.db.password` because new random values will be generated in the secret on each `helm upgrade` otherwise. Since the database password is set during initialization only, this will break the database health check and Wordpress' configuration.
+
 > **Tip**: List all releases using `helm list`
 
 ## Uninstalling the Chart
